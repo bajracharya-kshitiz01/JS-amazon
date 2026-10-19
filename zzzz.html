@@ -6,12 +6,47 @@
   <title>Document</title>
 </head>
 <body>
+  <div class="js-collection-of-buttons">
+    
+  </div>
   
   <script>
-    const array=[1,2,3,4,5];
-    array.forEach(function(one){
-      console.log(one);
+    const array=[{
+      id: 1,
+      name:'Ram'
+    },
+  {
+      id: 2,
+      name: 'Sita'
+    },
+  {
+      id: 3,
+      name: 'Hari'
+    },
+  {
+      id: 4,
+      name: 'Ram'
+    }];
+    let registeredEntity=[];
+    let buttonsHTML='';
+    array.forEach((item)=>{
+      buttonsHTML+=`
+      <button class="js-button" data-id="${a}">
+      ${item.id}-${item.name}</button>`;
     });
+
+    document.querySelector('.js-collection-of-buttons').innerHTML=buttonsHTML;
+
+    document.querySelectorAll('.js-button').forEach((item)=>{
+      item.addEventListener('click',()=>{
+        
+        printWhoCalled(item);
+      })
+    })
+    function printWhoCalled(whoCalled){
+      console.log(`Hello said by ${whoCalled.name} whose id is ${whoCalled.id}`);
+    }
+    
   </script>
 </body>
 </html>
