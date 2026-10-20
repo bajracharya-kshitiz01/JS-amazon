@@ -3,49 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>zzzz</title>
+  <style>
+    .ello-button{
+      background-color: green;
+    }
+    .Ello-Button{
+      font-size: 30px;
+      background-color: yellow;
+      padding: 20px;
+      border:none;
+    }
+  </style>
 </head>
 <body>
-  <div class="js-collection-of-buttons">
-    
-  </div>
-  
+  <button class="ello-button">
+    Ello!
+  </button>
   <script>
-    const array=[{
-      id: 1,
-      name:'Ram'
-    },
-  {
-      id: 2,
-      name: 'Sita'
-    },
-  {
-      id: 3,
-      name: 'Hari'
-    },
-  {
-      id: 4,
-      name: 'Ram'
-    }];
-
-    let buttonsHTML='';
-
-    array.forEach((item)=>{
-      buttonsHTML+=`
-      <button class="js-button">
-      ${item.id}-${item.name}</button>`;
-    });
-
-    document.querySelector('.js-collection-of-buttons').innerHTML=buttonsHTML;
-
-    let count = 0;
-    document.querySelectorAll('.js-button').forEach((item)=>{
-      
-      count++;
-      console.log(count);
-    });
-    
-    
+    document.querySelector('.ello-button').addEventListener('click',()=>{
+      const change= document.querySelector('.ello-button');
+      change.classList.add('Ello-Button');
+    })
   </script>
 </body>
 </html>
