@@ -1,3 +1,4 @@
+//amazon.js
 import {cart, addToCart,calculateCartQuantity} from '../data/cart.js';
 import {products} from '../data/products.js';
 import {formatCurrency} from './utils/money.js';
@@ -63,14 +64,9 @@ const addedMessageTimeouts = {};
 
 function updateCartQuantity(){
   const cartQuantity=calculateCartQuantity();
-document.querySelector('.js-cart-quantity')
+  document.querySelector('.js-cart-quantity')
     .innerHTML = cartQuantity;
-// cartQuantityInnerHtml(cartQuantity);
 };
-// export function cartQuantityInnerHtml(cartQuantity){
-//   document.querySelector('.js-cart-quantity')
-//     .innerHTML = cartQuantity;
-// }
 
 updateCartQuantity();
 
