@@ -134,39 +134,55 @@ document.querySelector('.js-order-summary')
         const productId = link.dataset.productId;
         const quantityInput = document.querySelector(`.js-quantity-input-${productId}`);
         const newQuantity = Number(quantityInput.value);
-        if (newQuantity<=0 || newQuantity>100){
+        if (newQuantity<0 || newQuantity>100){
           alert('Can\'t enter less than 0 and greater than 100');
           return;
+        }else if(newQuantity===0){
+          removeFromCart(productId);
+          const container = document.querySelector(`.js-cart-item-container-${productId}`);
+      container.remove();
+      updateCartQuantity();
+          return;
         }
+        updateQuantity(productId,newQuantity);
         const container = document.querySelector(`.js-cart-item-container-${productId}`);
         container.classList.remove('is-editing-quantity');
-        document.querySelector(`.js-quantity-label-${productId}`)
-          .innerHTML = newQuantity;
-          updateQuantity(productId,newQuantity);
+              const quantityLabel = document.querySelector(
+        `.js-quantity-label-${productId}`
+      );
+      quantityLabel.innerHTML = newQuantity;
           updateCartQuantity();
       });
     });
 
-    document.querySelectorAll('.another-js-quantity-input')
-      .forEach((input)=>{
-        input.addEventListener('keydown',(event)=>{
-          if(event.code==="Enter"){
-            const productId = input.dataset.productId;
-        const quantityInput = document.querySelector(`.js-quantity-input-${productId}`);
-        const newQuantity = Number(quantityInput.value);
-        if (newQuantity<=0 || newQuantity>100){
-          alert('Can\'t enter less than 0 and greater than 100');
+      document.querySelectorAll('.another-js-quantity-input')
+        .forEach((input)=>{
+          input.addEventListener('keydown',(event)=>{
+            if(event.code==="Enter"){
+              const productId = input.dataset.productId;
+          const quantityInput = document.querySelector(`.js-quantity-input-${productId}`);
+          const newQuantity = Number(quantityInput.value);
+          if (newQuantity<0 || newQuantity>100){
+            alert('Can\'t enter less than 0 and greater than 100');
+            return;
+          }else if(newQuantity===0){
+          removeFromCart(productId);
+          const container = document.querySelector(`.js-cart-item-container-${productId}`);
+      container.remove();
+      updateCartQuantity();
           return;
         }
+        updateQuantity(productId,newQuantity);
         const container = document.querySelector(`.js-cart-item-container-${productId}`);
         container.classList.remove('is-editing-quantity');
-        document.querySelector(`.js-quantity-label-${productId}`)
-          .innerHTML = newQuantity;
-          updateQuantity(productId,newQuantity);
+              const quantityLabel = document.querySelector(
+        `.js-quantity-label-${productId}`
+      );
+      quantityLabel.innerHTML = newQuantity;
           updateCartQuantity();
-          }
+            }
+          });
         });
-      });
 
     document.querySelectorAll('.js-delete-link')
   .forEach((link)=>{
